@@ -25,4 +25,10 @@ class Gossip
   def self.find(id)
     Gossip.all[id.to_i-1]
   end
+
+  def edit
+    CSV.open("./db/gossip.csv", "w") do |csv| 
+      csv << [@author, @content]
+    end
+  end
 end
